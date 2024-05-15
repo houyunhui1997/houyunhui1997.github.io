@@ -9395,3 +9395,9 @@ hr:before {
 #live2d-widget{
   right: 150px !important;
 }
+
+@media screen and (max-width: 768px) {
+  .aplayer {
+    display: none;
+  }
+}
