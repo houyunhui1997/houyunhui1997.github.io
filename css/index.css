@@ -9392,3 +9392,6 @@ hr:before {
   transition: all 0.3s ease-in-out;
 }
 
+#live2d-widget{
+  right: 150px !important;
+}
