@@ -9393,11 +9393,16 @@ hr:before {
 }
 
 #live2d-widget{
+  /* live2D位置固定 */
   right: 150px !important;
 }
 
 @media screen and (max-width: 768px) {
+  /* 移动端屏蔽音乐插件 */
   .aplayer {
     display: none;
+  }
+  #aplayer-oSEOhviA{
+    display: block;
   }
 }
