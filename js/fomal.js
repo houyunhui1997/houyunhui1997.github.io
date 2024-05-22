@@ -3160,10 +3160,10 @@ if (localStorage.getItem("blogbg") != undefined) {
   setBg(localStorage.getItem("blogbg"));
 } else {
   document.getElementById("defineBg").innerText = `:root{
-    --default-bg: url(https://sourcebucket.s3.bitiful.net/img/dm11.webp);
-    --darkmode-bg:url(https://sourcebucket.s3.bitiful.net/img/dm11.webp);
-    --mobileday-bg: url(https://sourcebucket.s3.bitiful.net/img/dm11.webp);
-    --mobilenight-bg: url(https://sourcebucket.s3.bitiful.net/img/dm11.webp);
+    --default-bg: url(https://sourcebucket.s3.bitiful.net/img/dm12.webp);
+    --darkmode-bg:url(https://sourcebucket.s3.bitiful.net/img/dm12.webp);
+    --mobileday-bg: url(https://sourcebucket.s3.bitiful.net/img/dm12.webp);
+    --mobilenight-bg: url(https://sourcebucket.s3.bitiful.net/img/dm12.webp);
   }`;
 }
 // 切换背景主函数
