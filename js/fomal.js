@@ -854,15 +854,6 @@ rmf.showRightMenu = function (isTrue, x = 0, y = 0) {
   }
 }
 
-rmf.copyWordsLink = function () {
-  let url = window.location.href
-  let txa = document.createElement("textarea");
-  txa.value = url;
-  document.body.appendChild(txa)
-  txa.select();
-  document.execCommand("Copy");
-  document.body.removeChild(txa);
-}
 rmf.switchReadMode = function () {
   const $body = document.body
   $body.classList.add('read-mode')
@@ -880,8 +871,30 @@ rmf.switchReadMode = function () {
   newEle.addEventListener('click', clickFn)
 }
 
+// 播放/暂停音乐
+rmf.startMusic = function(){
+  anzhiyu.musicToggle();
+  if (anzhiyu_musicPlaying) {
+    $(".fa-play").removeClass("fa-play").addClass("fa-pause").next().html("暂停音乐")
+  }else{
+    $(".fa-pause").removeClass("fa-pause").addClass("fa-play").next().html("播放音乐")
+  }
+ 
+}
+
+// 下一首音乐
+rmf.musicSkipForward = function(){
+  anzhiyu.musicSkipForward();
+}
+
+// 上一首音乐
+rmf.musicSkipBack = function(){
+  anzhiyu.musicSkipBack();
+}
+
 //复制选中文字
 rmf.copySelect = function () {
+  console.log(1);
   document.execCommand('Copy', false, null);
 }
 
@@ -3160,10 +3173,10 @@ if (localStorage.getItem("blogbg") != undefined) {
   setBg(localStorage.getItem("blogbg"));
 } else {
   document.getElementById("defineBg").innerText = `:root{
-    --default-bg: url(https://sourcebucket.s3.bitiful.net/img/dm12.webp);
-    --darkmode-bg:url(https://sourcebucket.s3.bitiful.net/img/dm12.webp);
-    --mobileday-bg: url(https://sourcebucket.s3.bitiful.net/img/dm12.webp);
-    --mobilenight-bg: url(https://sourcebucket.s3.bitiful.net/img/dm12.webp);
+    --default-bg: url(https://sourcebucket.s3.bitiful.net/img/dm11.webp);
+    --darkmode-bg:url(https://sourcebucket.s3.bitiful.net/img/dm11.webp);
+    --mobileday-bg: url(https://sourcebucket.s3.bitiful.net/img/dm11.webp);
+    --mobilenight-bg: url(https://sourcebucket.s3.bitiful.net/img/dm11.webp);
   }`;
 }
 // 切换背景主函数
