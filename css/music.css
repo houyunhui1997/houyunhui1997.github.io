@@ -471,3 +471,10 @@
       left: -66px;
     }
   }
+
+  .layout.hide-aside#content-inner{
+    max-width: 1400px;
+  }
+  #body-wrap.page{
+    min-height: 100%;
+  }
