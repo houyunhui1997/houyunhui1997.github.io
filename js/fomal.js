@@ -290,9 +290,9 @@ function showWelcome() {
     // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
   }
 }
-window.onload = showWelcome;
+// window.onload = showWelcome;
 // 如果使用了pjax在加上下面这行代码
-document.addEventListener('pjax:complete', showWelcome);
+// document.addEventListener('pjax:complete', showWelcome);
 
 /* 欢迎信息 end */
 
@@ -2780,15 +2780,18 @@ class Cursor {
 //----------------------------------------------------------------
 
 /* 页脚计时器 start */
-var now = new Date();
 function createtime() {
+  var now = new Date();
   // 当前时间
-  now.setTime(now.getTime() + 1000);
-  var start = new Date("08/01/2022 00:00:00"); // 旅行者1号开始计算的时间
-  var dis = Math.trunc(23400000000 + ((now - start) / 1000) * 17); // 距离=秒数*速度 记住转换毫秒
-  var unit = (dis / 149600000).toFixed(6);  // 天文单位
+  const comingYear = new Date().getFullYear() + 1;
+  const comingDate = new Date(`Jan 21, ${comingYear} 00:00:00`);
+  const remainingTime = comingDate.getTime() - now.getTime();
+  const Ydays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+  const Yhours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const Ymins = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+  const Ysecs = Math.floor((remainingTime % (1000 * 60)) / 1000);
   // 网站诞生时间
-  var grt = new Date("08/09/2023 00:00:00");
+  var grt = new Date("08/09/2022 00:00:00");
   var days = (now - grt) / 1e3 / 60 / 60 / 24,
     dnum = Math.floor(days),
     hours = (now - grt) / 1e3 / 60 / 60 - 24 * dnum,
@@ -2800,13 +2803,8 @@ function createtime() {
   var seconds = (now - grt) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
     snum = Math.round(seconds);
   1 == String(snum).length && (snum = "0" + snum);
-  let currentTimeHtml = "";
-  (currentTimeHtml =
-    hnum < 18 && hnum >= 9
-      ? `<img class='boardsign' src='https://lskypro.acozycotage.net/Hacp/badge/F小屋-科研摸鱼中.svg' title='什么时候能够实现财富自由呀~'><br> <div style="font-size:13px;font-weight:bold">本站居然运行了 ${dnum} 天 ${hnum} 小时 ${mnum} 分 ${snum} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${dis} 千米，约为 ${unit} 个天文单位 🚀</div>`
-      : `<img class='boardsign' src='https://sourcebucket.s3.bitiful.net/badge/F小屋-下班休息啦.svg' title='下班了就该开开心心地玩耍~'><br> <div style="font-size:13px;font-weight:bold">本站居然运行了 ${dnum} 天 ${hnum} 小时 ${mnum} 分 ${snum} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${dis} 千米，约为 ${unit} 个天文单位 🚀</div>`),
-    document.getElementById("workboard") &&
-    (document.getElementById("workboard").innerHTML = currentTimeHtml);
+  let currentTimeHtml =  ` <div style="font-size:13px;font-weight:bold">本站居然运行了 ${dnum} 天 ${hnum} 小时 ${mnum} 分 ${snum} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br>距离新的一年还有${Ydays}天${Yhours}小时${Ymins}分${Ysecs}秒</div>`;
+  document.getElementById("workboard").innerHTML = currentTimeHtml;
 }
 // 设置重复执行函数，周期1000ms
 setInterval(() => {
@@ -2858,7 +2856,7 @@ if (window.localStorage.getItem("fpson") == undefined || window.localStorage.get
       } else {
         var kd = `<span style="color:#39c5bb">十分流畅🤣</span>`
       }
-      document.getElementById("fps").innerHTML = `FPS:${fps} ${kd}`;
+      // document.getElementById("fps").innerHTML = `FPS:${fps} ${kd}`;
       frame = 0;
       lastTime = now;
     };
@@ -2927,7 +2925,7 @@ function setFont(n) {
   localStorage.setItem("font", n)
   if (n == "default") {
     document.documentElement.style.setProperty('--global-font', '-apple-system');
-    document.body.style.fontFamily = "-apple-system, Consolas_1, BlinkMacSystemFont, 'Segoe UI' , 'Helvetica Neue' , Lato, Roboto, 'PingFang SC' , 'Microsoft JhengHei' , 'Microsoft YaHei' , sans-serif";
+    document.body.style.fontFamily = "cursive, Consolas_1, BlinkMacSystemFont, 'Segoe UI' , 'Helvetica Neue' , Lato, Roboto, 'PingFang SC' , 'Microsoft JhengHei' , 'Microsoft YaHei' , sans-serif";
   }
   else {
     document.documentElement.style.setProperty('--global-font', n);
@@ -3374,11 +3372,11 @@ function createWinbox() {
 
 <h2>二、字体设置</h2>
 <p id="swfs">
-<a class="swf" id="swf_FangSong" href="javascript:;" rel="noopener external nofollow" style="font-family:'FangSong'!important;color:black" onclick="setFont('FangSong')">仿宋</a>
-<a class="swf" id="swf_PMingLiU" href="javascript:;" rel="noopener external nofollow" style="font-family:'PMingLiU'!important;color:black" onclick="setFont('PMingLiU')">新细明体</a>
-<a class="swf" id="swf_KaiTi" href="javascript:;" rel="noopener external nofollow" style="font-family:'KaiTi'!important;color:black" onclick="setFont('KaiTi')">楷体</a>
-<a class="swf" id="swf_SimHei" href="javascript:;" rel="noopener external nofollow" style="font-family:'SimHei'!important;color:black" onclick="setFont('SimHei')">黑体</a>
-<a class="swf" id="swf_SimSun" href="javascript:;" rel="noopener external nofollow" style="font-family:'SimSun'!important;color:black" onclick="setFont('SimSun')">宋体</a>
+<a class="swf" id="swf_FangSong" href="javascript:;" rel="noopener external nofollow" style="font-family:'BeautyReflections'!important;color:black" onclick="setFont('BeautyReflections')">黄油体</a>
+<a class="swf" id="swf_PMingLiU" href="javascript:;" rel="noopener external nofollow" style="font-family:'ZhiMangXing'!important;color:black" onclick="setFont('ZhiMangXing')">莽行书</a>
+<a class="swf" id="swf_KaiTi" href="javascript:;" rel="noopener external nofollow" style="font-family:'KaiTi'!important;color:black" onclick="setFont('default')">默认（楷体）</a>
+<a class="swf" id="swf_SimHei" href="javascript:;" rel="noopener external nofollow" style="font-family:'MaoCao'!important;color:black" onclick="setFont('MaoCao')">毛草</a>
+<a class="swf" id="swf_SimSun" href="javascript:;" rel="noopener external nofollow" style="font-family:'LongCang'!important;color:black" onclick="setFont('LongCang')">龙藏体</a>
 <a class="swf" id="swf_default" href="javascript:;" rel="noopener external nofollow" style="font-family:-apple-system, IBM Plex Mono ,monosapce,'微软雅黑', sans-serif;!important;color:black" onclick="setFont('default')">默认（微软雅黑）</a>
 </p>
 

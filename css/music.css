@@ -103,14 +103,14 @@
     --anzhiyu-card-border: #42444a;
   }
 
-  #page:has(#anMusic-page) {
-    border: 0;
+  #page {
+    border: 0 !important;
     box-shadow: none !important;
     padding: 0 !important;
     background: transparent !important;
   }
   #an_music_bg {
-    display: none;
+    display: block;
     filter: blur(63px);
     opacity: 0.6;
     position: fixed;
@@ -125,11 +125,8 @@
     left: -50%;
     transform: rotate(0deg);
   }
-  body:has(#anMusic-page) #an_music_bg {
-    display: block;
-  }
   
-  body:has(#anMusic-page) {
+  body {
     background: rgb(13, 13, 13);
   }
   
@@ -141,11 +138,11 @@
     box-shadow: none;
   }
   
-  body:has(#anMusic-page) #web_bg {
+  body #web_bg {
     display: none;
   }
-  body:has(#anMusic-page) #footer,
-  body:has(#anMusic-page) #nav-music {
+  body #footer,
+  body #nav-music {
     display: none;
   }
   
@@ -300,36 +297,49 @@
   }
   
   /* 导航栏 */
-  .page:has(#anMusic-page) #nav {
+  .page #nav {
     backdrop-filter: none !important;
     background: 0 0 !important;
     border-bottom: none !important;
   }
   
-  .page:has(#anMusic-page) #page-header.not-top-img #nav a,
-  .page:has(#anMusic-page) #page-header #nav .back-home-button {
+  .page #page-header.not-top-img #nav a,
+  .page #page-header #nav .back-home-button {
     color: var(--anzhiyu-white);
   }
   
-  body:has(#anMusic-page) .s-sticker div {
+  body .s-sticker div {
     color: var(--anzhiyu-white) !important;
   }
   
-  body:has(#anMusic-page) .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon.aplayer-icon-loop {
+  body .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon.aplayer-icon-loop {
     margin-right: 15px;
   }
   
-  [data-theme="dark"] .page:has(#anMusic-page) #page-header:before {
+  [data-theme="dark"] .page #page-header:before {
     background-color: transparent;
   }
   
   /* **** 移动端样式 ***** */
   @media screen and (max-width: 768px) {
-    body:has(#anMusic-page) #rightside {
+    body #rightside {
       display: none;
     }
-    body:has(#anMusic-page) #content-inner,
-    body:has(#anMusic-page) #page {
+    #cursor {
+      cursor: none;
+      /* 为了确保内容可以正常选中，可以添加以下属性 */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      display: none;
+    }
+
+    #anMusicBtnGetSong{
+      margin-right: 50px;
+    }
+    body #content-inner,
+    body #page {
       z-index: auto;
     }
     /* 歌曲列表 */
@@ -482,3 +492,34 @@
   /* .aplayer-icon-loop{
     display: none;
   } */
+
+  @font-face {
+    font-family: 'BeautyReflections';
+    src: url(../assets/ZCOOLKuaiLe-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  
+  @font-face {
+    font-family: 'ZhiMangXing';
+    src: url(../assets/ZhiMangXing-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  
+  @font-face {
+    font-family: 'MaoCao';
+    src: url(../assets/LiuJianMaoCao-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  
+  @font-face {
+    font-family: 'LongCang';
+    src: url(../assets/LongCang-Regular.ttf);
+    font-weight: normal;
+    font-style: normal;
+  }

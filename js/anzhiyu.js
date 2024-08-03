@@ -75,8 +75,11 @@ var anzhiyu = {
         // 确保player加载完成
         if (musiccover) {
           clearInterval(timer);
+            // 第一次进入，绑定事件，改背景
           anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
           // 绑定事件
+          $("body").css("background","rgb(13, 13, 13)")
+          anzhiyu.jayClick();
           anzhiyu.addEventListenerChangeMusicBg();
           anzhiyu.addEventListenerMusic();
           // 暂停nav的音乐
@@ -96,6 +99,11 @@ var anzhiyu = {
 
     anMusicPage.querySelector("meting-js").aplayer.on("loadeddata", function () {
       anzhiyu.changeMusicBg();
+      
+    // 第一次进入，绑定事件，改背景
+      const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
+      const anMusicBg = document.getElementById("an_music_bg");
+      anMusicBg.style.backgroundImage = musiccover.style.backgroundImage;
       console.info("player loadeddata");
     });
 
@@ -134,13 +142,13 @@ var anzhiyu = {
         // t = Math.floor(Math.random() * t.length),
         // e.list.switch(t)) : anzhiyu.cacheAndPlayMusic()
     }),
-    o.addEventListener("click", function() {
-        localStorage.removeItem("musicData"),
-        anzhiyu.snackbarShow("已移除相关缓存歌曲")
-    }),
-    i.addEventListener("click", function() {
-        anzhiyu.changeMusicList()
-    }),
+    // o.addEventListener("click", function() {
+    //     localStorage.removeItem("musicData"),
+    //     anzhiyu.snackbarShow("已移除相关缓存歌曲")
+    // }),
+    // i.addEventListener("click", function() {
+    //     anzhiyu.changeMusicList()
+    // }),
     "custom" === GLOBAL_CONFIG.music_page_default && anzhiyu.changeMusicList(),
     document.addEventListener("keydown", function(e) {
         "Space" === e.code && (e.preventDefault(),
@@ -241,19 +249,19 @@ playMusic: function(e) {
     t.list.add([n]),
     t.list.switch(o.length),
     selectRandomSong.push(n.name);
-    new Vue({
-      data: function () {
-        this.$notify({
-          title: "",
-          message: "本次随机歌曲："+n.name,
-          position: 'top-left',
-          offset: 50,
-          showClose: true,
-          type: "success",
-          duration: 5000
-        });
-      }
-    })
+    // new Vue({
+    //   data: function () {
+    //     this.$notify({
+    //       title: "",
+    //       message: "本次随机歌曲："+n.name,
+    //       position: 'top-left',
+    //       offset: 50,
+    //       showClose: true,
+    //       type: "success",
+    //       duration: 5000
+    //     });
+    //   }
+    // })
   }
 },
 jayClick: function(){
@@ -279,18 +287,15 @@ jayClick: function(){
 }
 };
 
+if ($("#anMusic-page").length) {
+  $("#web_bg, #footer, #nav-music").hide();
+} else {
+  $("#web_bg, #footer, #nav-music").show();
+}
+
 // 如果有右键事件 可以在这里写。
 // addRightMenuClickEvent();
 
-// 第一次进入，绑定事件，改背景
-let timer22 = setInterval(() => {
-  const musiccover = document.querySelector("#anMusic-page .aplayer-pic");
-  // 确保player加载完成
-  if (musiccover) {
-    clearInterval(timer22);
-    anzhiyu.jayClick();
-  }
-}, 100);
 
 // 调用
 anzhiyu.changeMusicBg(false);
