@@ -103,7 +103,7 @@
     --anzhiyu-card-border: #42444a;
   }
 
-  #page {
+  .pageClass {
     border: 0 !important;
     box-shadow: none !important;
     padding: 0 !important;
@@ -297,7 +297,7 @@
   }
   
   /* 导航栏 */
-  .page #nav {
+  .navClass {
     backdrop-filter: none !important;
     background: 0 0 !important;
     border-bottom: none !important;

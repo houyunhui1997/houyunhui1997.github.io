@@ -347,14 +347,11 @@ document.addEventListener("copy", function () {
   debounce(function () {
     new Vue({
       data: function () {
-        this.$notify({
-          title: "哎嘿！复制成功🍬",
-          message: "若要转载最好保留原文链接哦，给你一个大大的赞！",
-          position: 'top-left',
-          offset: 50,
-          showClose: true,
+        this.$message({
+          title: "哎嘿！复制成功",
+          message: "若要转载最好保留原文链接哦",
           type: "success",
-          duration: 5000
+          duration: 3000
         });
       }
     })
@@ -368,14 +365,11 @@ document.onkeydown = function (e) {
     debounce(function () {
       new Vue({
         data: function () {
-          this.$notify({
-            title: "你已被发现😜",
-            message: "小伙子，扒源记住要遵循GPL协议！",
-            position: 'top-left',
-            offset: 50,
-            showClose: true,
+          this.$message({
+            title: "你已被发现",
+            message: "",
             type: "warning",
-            duration: 5000
+            duration: 3000
           });
         }
       })
@@ -1086,14 +1080,10 @@ function changeMouseMode() {
     debounce(function () {
       new Vue({
         data: function () {
-          this.$notify({
+          this.$message({
             title: "切换右键模式成功🍔",
             message: "当前鼠标右键已恢复为系统默认！",
-            position: 'top-left',
-            offset: 50,
-            showClose: true,
-            type: "success",
-            duration: 5000
+            duration: 3000
           });
         }
       })
@@ -1104,14 +1094,10 @@ function changeMouseMode() {
     debounce(function () {
       new Vue({
         data: function () {
-          this.$notify({
+          this.$message({
             title: "切换右键模式成功🍔",
             message: "当前鼠标右键已更换为网站指定样式！",
-            position: 'top-left',
-            offset: 50,
-            showClose: true,
-            type: "success",
-            duration: 5000
+            duration: 3000
           });
         }
       })
@@ -1224,13 +1210,9 @@ function switchNightMode() {
     setTimeout(() => {
       new Vue({
         data: function () {
-          this.$notify({
+          this.$message({
             title: "关灯啦🌙",
             message: "当前已成功切换至夜间模式！",
-            position: 'top-left',
-            offset: 50,
-            showClose: true,
-            type: "success",
             duration: 5000
           });
         }
@@ -1251,13 +1233,9 @@ function switchNightMode() {
     setTimeout(() => {
       new Vue({
         data: function () {
-          this.$notify({
+          this.$message({
             title: "开灯啦🌞",
             message: "当前已成功切换至白天模式！",
-            position: 'top-left',
-            offset: 50,
-            showClose: true,
-            type: "success",
             duration: 5000
           });
         }
@@ -1285,14 +1263,11 @@ function share_() {
     navigator.clipboard.writeText(url);
     new Vue({
       data: function () {
-        this.$notify({
-          title: "成功复制分享信息🎉",
-          message: "您现在可以通过粘贴直接跟小伙伴分享了！",
-          position: 'top-left',
-          offset: 50,
-          showClose: true,
+        this.$message({
+          title: "成功复制",
+          message: "您现在可以粘贴了",
           type: "success",
-          duration: 5000
+          duration: 3000
         });
         // return { visible: false }
       }
@@ -2885,14 +2860,11 @@ if (localStorage.getItem("reset_4") == undefined) {
   setTimeout(function () {
     new Vue({
       data: function () {
-        this.$notify({
+        this.$message({
           title: "提示🍒",
           message: " (｡･∀･)ﾉﾞ由于网站部分设置项更新，当前已为您重置所有设置，祝您愉快！",
-          position: 'top-left',
-          offset: 50,
-          showClose: true,
           type: "success",
-          duration: 8000
+          duration: 3000
         });
       }
     })
@@ -3207,14 +3179,11 @@ function getPicture_() {
     // 提示切换成功
     new Vue({
       data: function () {
-        this.$notify({
+        this.$message({
           title: "可以啦🍨",
           message: "切换自定义背景成功！",
-          position: 'top-left',
-          offset: 50,
-          showClose: true,
           type: "success",
-          duration: 5000
+          duration: 3000
         });
       }
     })
@@ -3222,12 +3191,9 @@ function getPicture_() {
     // 无效的图片链接，提示无效
     new Vue({
       data: function () {
-        this.$notify({
+        this.$message({
           title: "链接不对🤣",
           message: "请输入有效的图片链接！",
-          position: 'top-left',
-          offset: 50,
-          showClose: true,
           type: "warning",
           duration: 5000
         });

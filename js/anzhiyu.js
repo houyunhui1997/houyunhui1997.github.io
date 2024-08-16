@@ -288,8 +288,12 @@ jayClick: function(){
 };
 
 if ($("#anMusic-page").length) {
+  $("#page").addClass("pageClass");
+  $("#nav").addClass("navClass")
   $("#web_bg, #footer, #nav-music").hide();
 } else {
+  $("#page").removeClass("pageClass")
+  $("#nav").removeClass("navClass")
   $("#web_bg, #footer, #nav-music").show();
 }
 
