@@ -54,7 +54,7 @@ function tonav() {
     position = scroll;
   });
   //修复没有弄右键菜单的童鞋无法回顶部的问题
-  document.getElementById("page-name").innerText = document.title.split(" | Hacp🥝")[0];
+  document.getElementById("page-name").innerText = document.title.split(" | Hacp🍉")[0];
 }
 
 function scrollToTop() {
@@ -1139,34 +1139,6 @@ function createtime1() {
 createtime1();
 
 function createtime2() {
-  // var ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为「大聪明」`, `Photo captured: `, ` 🤪 `];
-
-  // setTimeout(
-  //   console.log.bind(
-  //     console,
-  //     `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}`,
-  //     "color:white; background-color:#10bcc0",
-  //     "",
-  //     "",
-  //     'background:url("https://unpkg.zhimg.com/anzhiyu-assets@latest/image/common/tinggge.gif") no-repeat;font-size:450%'
-  //   )
-  // );
-
-  // setTimeout(console.log.bind(console, "%c WELCOME %c 欢迎光临，大聪明", "color:white; background-color:#23c682", ""));
-
-  // setTimeout(
-  //   console.warn.bind(
-  //     console,
-  //     "%c ⚡ Powered by Hacp🥝 %c 你正在访问Hacp🥝の小家",
-  //     "color:white; background-color:#f0ad4e",
-  //     ""
-  //   )
-  // );
-
-  // setTimeout(console.log.bind(console, "%c W23-12 %c 系统监测到你已打开控制台", "color:white; background-color:#4f90d9", ""));
-  // setTimeout(
-  //   console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中", "color:white; background-color:#d9534f", "")
-  // );
 }
 createtime2();
 
@@ -1259,7 +1231,7 @@ function share_() {
   try {
     // 截取标题
     var title = document.title;
-    var subTitle = title.endsWith("| Hacp🥝") ? title.substring(0, title.length - 14) : title;
+    var subTitle = title.endsWith("| Hacp🍉") ? title.substring(0, title.length - 14) : title;
     navigator.clipboard.writeText(url);
     new Vue({
       data: function () {
@@ -2495,7 +2467,7 @@ if (m == 12 && dd == 25) {//圣诞节
 }
 if (m == 8 && dd == 11) {//站长生日
   if (sessionStorage.getItem("isPopupWindow") != "1") {
-    Swal.fire("祝站长" + (y - 1998).toString() + "岁生日快乐！🥝");
+    Swal.fire("祝站长" + (y - 1998).toString() + "岁生日快乐！🍉");
     sessionStorage.setItem("isPopupWindow", "1");
   }
 }
