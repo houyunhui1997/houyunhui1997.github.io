@@ -54,7 +54,7 @@ function tonav() {
     position = scroll;
   });
   //修复没有弄右键菜单的童鞋无法回顶部的问题
-  document.getElementById("page-name").innerText = document.title.split(" | Fomalhaut🥝")[0];
+  document.getElementById("page-name").innerText = document.title.split(" | Hacp🍉")[0];
 }
 
 function scrollToTop() {
@@ -290,9 +290,9 @@ function showWelcome() {
     // console.log("Pjax无法获取#welcome-info元素🙄🙄🙄")
   }
 }
-window.onload = showWelcome;
+// window.onload = showWelcome;
 // 如果使用了pjax在加上下面这行代码
-document.addEventListener('pjax:complete', showWelcome);
+// document.addEventListener('pjax:complete', showWelcome);
 
 /* 欢迎信息 end */
 
@@ -347,14 +347,11 @@ document.addEventListener("copy", function () {
   debounce(function () {
     new Vue({
       data: function () {
-        this.$notify({
-          title: "哎嘿！复制成功🍬",
-          message: "若要转载最好保留原文链接哦，给你一个大大的赞！",
-          position: 'top-left',
-          offset: 50,
-          showClose: true,
+        this.$message({
+          title: "哎嘿！复制成功",
+          message: "若要转载最好保留原文链接哦",
           type: "success",
-          duration: 5000
+          duration: 3000
         });
       }
     })
@@ -368,14 +365,11 @@ document.onkeydown = function (e) {
     debounce(function () {
       new Vue({
         data: function () {
-          this.$notify({
-            title: "你已被发现😜",
-            message: "小伙子，扒源记住要遵循GPL协议！",
-            position: 'top-left',
-            offset: 50,
-            showClose: true,
+          this.$message({
+            title: "你已被发现",
+            message: "",
             type: "warning",
-            duration: 5000
+            duration: 3000
           });
         }
       })
@@ -674,8 +668,8 @@ if (document.body.clientWidth > 992) {
         zoom: 0.9,
         borderRadius: 5 + 'px',
         right: 55.6 + 'px',
-        nekoImg: "https://bu.dusays.com/2022/07/20/62d812db74be9.png",
-        hoverMsg: "春天啦~",
+        nekoImg: "https://tuchuang.voooe.cn/images/2024/05/20/image.png",
+        hoverMsg: "夏天啦~",
         color: "var(--theme-color)",
         during: 500,
         blog_body: "body",
@@ -854,15 +848,6 @@ rmf.showRightMenu = function (isTrue, x = 0, y = 0) {
   }
 }
 
-rmf.copyWordsLink = function () {
-  let url = window.location.href
-  let txa = document.createElement("textarea");
-  txa.value = url;
-  document.body.appendChild(txa)
-  txa.select();
-  document.execCommand("Copy");
-  document.body.removeChild(txa);
-}
 rmf.switchReadMode = function () {
   const $body = document.body
   $body.classList.add('read-mode')
@@ -880,8 +865,30 @@ rmf.switchReadMode = function () {
   newEle.addEventListener('click', clickFn)
 }
 
+// 播放/暂停音乐
+rmf.startMusic = function(){
+  anzhiyu.musicToggle();
+  if (anzhiyu_musicPlaying) {
+    $(".fa-play").removeClass("fa-play").addClass("fa-pause").next().html("暂停音乐")
+  }else{
+    $(".fa-pause").removeClass("fa-pause").addClass("fa-play").next().html("播放音乐")
+  }
+ 
+}
+
+// 下一首音乐
+rmf.musicSkipForward = function(){
+  anzhiyu.musicSkipForward();
+}
+
+// 上一首音乐
+rmf.musicSkipBack = function(){
+  anzhiyu.musicSkipBack();
+}
+
 //复制选中文字
 rmf.copySelect = function () {
+  console.log(1);
   document.execCommand('Copy', false, null);
 }
 
@@ -1073,14 +1080,10 @@ function changeMouseMode() {
     debounce(function () {
       new Vue({
         data: function () {
-          this.$notify({
+          this.$message({
             title: "切换右键模式成功🍔",
             message: "当前鼠标右键已恢复为系统默认！",
-            position: 'top-left',
-            offset: 50,
-            showClose: true,
-            type: "success",
-            duration: 5000
+            duration: 3000
           });
         }
       })
@@ -1091,14 +1094,10 @@ function changeMouseMode() {
     debounce(function () {
       new Vue({
         data: function () {
-          this.$notify({
+          this.$message({
             title: "切换右键模式成功🍔",
             message: "当前鼠标右键已更换为网站指定样式！",
-            position: 'top-left',
-            offset: 50,
-            showClose: true,
-            type: "success",
-            duration: 5000
+            duration: 3000
           });
         }
       })
@@ -1140,34 +1139,6 @@ function createtime1() {
 createtime1();
 
 function createtime2() {
-  // var ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为「大聪明」`, `Photo captured: `, ` 🤪 `];
-
-  // setTimeout(
-  //   console.log.bind(
-  //     console,
-  //     `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}`,
-  //     "color:white; background-color:#10bcc0",
-  //     "",
-  //     "",
-  //     'background:url("https://unpkg.zhimg.com/anzhiyu-assets@latest/image/common/tinggge.gif") no-repeat;font-size:450%'
-  //   )
-  // );
-
-  // setTimeout(console.log.bind(console, "%c WELCOME %c 欢迎光临，大聪明", "color:white; background-color:#23c682", ""));
-
-  // setTimeout(
-  //   console.warn.bind(
-  //     console,
-  //     "%c ⚡ Powered by Fomalhaut🥝 %c 你正在访问Fomalhaut🥝の小家",
-  //     "color:white; background-color:#f0ad4e",
-  //     ""
-  //   )
-  // );
-
-  // setTimeout(console.log.bind(console, "%c W23-12 %c 系统监测到你已打开控制台", "color:white; background-color:#4f90d9", ""));
-  // setTimeout(
-  //   console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中", "color:white; background-color:#d9534f", "")
-  // );
 }
 createtime2();
 
@@ -1211,13 +1182,9 @@ function switchNightMode() {
     setTimeout(() => {
       new Vue({
         data: function () {
-          this.$notify({
+          this.$message({
             title: "关灯啦🌙",
             message: "当前已成功切换至夜间模式！",
-            position: 'top-left',
-            offset: 50,
-            showClose: true,
-            type: "success",
             duration: 5000
           });
         }
@@ -1238,13 +1205,9 @@ function switchNightMode() {
     setTimeout(() => {
       new Vue({
         data: function () {
-          this.$notify({
+          this.$message({
             title: "开灯啦🌞",
             message: "当前已成功切换至白天模式！",
-            position: 'top-left',
-            offset: 50,
-            showClose: true,
-            type: "success",
             duration: 5000
           });
         }
@@ -1268,18 +1231,15 @@ function share_() {
   try {
     // 截取标题
     var title = document.title;
-    var subTitle = title.endsWith("| Fomalhaut🥝") ? title.substring(0, title.length - 14) : title;
-    navigator.clipboard.writeText('Fomalhaut🥝的站内分享\n标题：' + subTitle + '\n链接：' + url + '\n欢迎来访！🍭🍭🍭');
+    var subTitle = title.endsWith("| Hacp🍉") ? title.substring(0, title.length - 14) : title;
+    navigator.clipboard.writeText(url);
     new Vue({
       data: function () {
-        this.$notify({
-          title: "成功复制分享信息🎉",
-          message: "您现在可以通过粘贴直接跟小伙伴分享了！",
-          position: 'top-left',
-          offset: 50,
-          showClose: true,
+        this.$message({
+          title: "成功复制",
+          message: "您现在可以粘贴了",
           type: "success",
-          duration: 5000
+          duration: 3000
         });
         // return { visible: false }
       }
@@ -2507,7 +2467,7 @@ if (m == 12 && dd == 25) {//圣诞节
 }
 if (m == 8 && dd == 11) {//站长生日
   if (sessionStorage.getItem("isPopupWindow") != "1") {
-    Swal.fire("祝站长" + (y - 1998).toString() + "岁生日快乐！🥝");
+    Swal.fire("祝站长" + (y - 1998).toString() + "岁生日快乐！🍉");
     sessionStorage.setItem("isPopupWindow", "1");
   }
 }
@@ -2767,15 +2727,18 @@ class Cursor {
 //----------------------------------------------------------------
 
 /* 页脚计时器 start */
-var now = new Date();
 function createtime() {
+  var now = new Date();
   // 当前时间
-  now.setTime(now.getTime() + 1000);
-  var start = new Date("08/01/2022 00:00:00"); // 旅行者1号开始计算的时间
-  var dis = Math.trunc(23400000000 + ((now - start) / 1000) * 17); // 距离=秒数*速度 记住转换毫秒
-  var unit = (dis / 149600000).toFixed(6);  // 天文单位
+  const comingYear = new Date().getFullYear() + 1;
+  const comingDate = new Date(`Jan 21, ${comingYear} 00:00:00`);
+  const remainingTime = comingDate.getTime() - now.getTime();
+  const Ydays = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+  const Yhours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const Ymins = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+  const Ysecs = Math.floor((remainingTime % (1000 * 60)) / 1000);
   // 网站诞生时间
-  var grt = new Date("08/09/2023 00:00:00");
+  var grt = new Date("08/09/2022 00:00:00");
   var days = (now - grt) / 1e3 / 60 / 60 / 24,
     dnum = Math.floor(days),
     hours = (now - grt) / 1e3 / 60 / 60 - 24 * dnum,
@@ -2787,13 +2750,8 @@ function createtime() {
   var seconds = (now - grt) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
     snum = Math.round(seconds);
   1 == String(snum).length && (snum = "0" + snum);
-  let currentTimeHtml = "";
-  (currentTimeHtml =
-    hnum < 18 && hnum >= 9
-      ? `<img class='boardsign' src='https://lskypro.acozycotage.net/Fomalhaut/badge/F小屋-科研摸鱼中.svg' title='什么时候能够实现财富自由呀~'><br> <div style="font-size:13px;font-weight:bold">本站居然运行了 ${dnum} 天 ${hnum} 小时 ${mnum} 分 ${snum} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${dis} 千米，约为 ${unit} 个天文单位 🚀</div>`
-      : `<img class='boardsign' src='https://sourcebucket.s3.bitiful.net/badge/F小屋-下班休息啦.svg' title='下班了就该开开心心地玩耍~'><br> <div style="font-size:13px;font-weight:bold">本站居然运行了 ${dnum} 天 ${hnum} 小时 ${mnum} 分 ${snum} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br> 旅行者 1 号当前距离地球 ${dis} 千米，约为 ${unit} 个天文单位 🚀</div>`),
-    document.getElementById("workboard") &&
-    (document.getElementById("workboard").innerHTML = currentTimeHtml);
+  let currentTimeHtml =  ` <div style="font-size:13px;font-weight:bold">本站居然运行了 ${dnum} 天 ${hnum} 小时 ${mnum} 分 ${snum} 秒 <i id="heartbeat" class='fas fa-heartbeat'></i> <br>距离新的一年还有${Ydays}天${Yhours}小时${Ymins}分${Ysecs}秒</div>`;
+  document.getElementById("workboard").innerHTML = currentTimeHtml;
 }
 // 设置重复执行函数，周期1000ms
 setInterval(() => {
@@ -2845,7 +2803,7 @@ if (window.localStorage.getItem("fpson") == undefined || window.localStorage.get
       } else {
         var kd = `<span style="color:#39c5bb">十分流畅🤣</span>`
       }
-      document.getElementById("fps").innerHTML = `FPS:${fps} ${kd}`;
+      // document.getElementById("fps").innerHTML = `FPS:${fps} ${kd}`;
       frame = 0;
       lastTime = now;
     };
@@ -2874,14 +2832,11 @@ if (localStorage.getItem("reset_4") == undefined) {
   setTimeout(function () {
     new Vue({
       data: function () {
-        this.$notify({
+        this.$message({
           title: "提示🍒",
           message: " (｡･∀･)ﾉﾞ由于网站部分设置项更新，当前已为您重置所有设置，祝您愉快！",
-          position: 'top-left',
-          offset: 50,
-          showClose: true,
           type: "success",
-          duration: 8000
+          duration: 3000
         });
       }
     })
@@ -2914,7 +2869,7 @@ function setFont(n) {
   localStorage.setItem("font", n)
   if (n == "default") {
     document.documentElement.style.setProperty('--global-font', '-apple-system');
-    document.body.style.fontFamily = "-apple-system, Consolas_1, BlinkMacSystemFont, 'Segoe UI' , 'Helvetica Neue' , Lato, Roboto, 'PingFang SC' , 'Microsoft JhengHei' , 'Microsoft YaHei' , sans-serif";
+    document.body.style.fontFamily = "cursive, Consolas_1, BlinkMacSystemFont, 'Segoe UI' , 'Helvetica Neue' , Lato, Roboto, 'PingFang SC' , 'Microsoft JhengHei' , 'Microsoft YaHei' , sans-serif";
   }
   else {
     document.documentElement.style.setProperty('--global-font', n);
@@ -3196,14 +3151,11 @@ function getPicture_() {
     // 提示切换成功
     new Vue({
       data: function () {
-        this.$notify({
+        this.$message({
           title: "可以啦🍨",
           message: "切换自定义背景成功！",
-          position: 'top-left',
-          offset: 50,
-          showClose: true,
           type: "success",
-          duration: 5000
+          duration: 3000
         });
       }
     })
@@ -3211,12 +3163,9 @@ function getPicture_() {
     // 无效的图片链接，提示无效
     new Vue({
       data: function () {
-        this.$notify({
+        this.$message({
           title: "链接不对🤣",
           message: "请输入有效的图片链接！",
-          position: 'top-left',
-          offset: 50,
-          showClose: true,
           type: "warning",
           duration: 5000
         });
@@ -3355,22 +3304,18 @@ function createWinbox() {
 </div>
 
 <div class="content" style="display:flex">
-  <div class="content-text" style="font-weight:bold; padding-left:10px"> 帧率监测 (刷新生效) </div><input type="checkbox" id="fpson" onclick="fpssw()">
   <div class="content-text" style="font-weight:bold; padding-left:10px"> 雪花特效 (白天模式) </div><input type="checkbox" id="snowSet" onclick="setSnow()">
 </div>
 
 
 <h2>二、字体设置</h2>
-<div class="note warning modern"><p>非商免字体未经授权只能个人使用。本站为完全非商业、非盈利性质的网站，平时用于个人学习交流，如有侵权请联系站长删除，谢谢！ —— 致版权方</p>
-</div>
 <p id="swfs">
-<a class="swf" id="swf_ZhuZiAWan" href="javascript:;" rel="noopener external nofollow" style="font-family:'ZhuZiAWan'!important;color:black" onclick="setFont('ZhuZiAWan')">筑紫A丸标准体2.0</a>
-<a class="swf" id="swf_HYTMR" href="javascript:;" rel="noopener external nofollow" style="font-family:'HYTMR'!important;color:black" onclick="setFont('HYTMR')">汉仪唐美人</a>
-<a class="swf" id="swf_LXGW" href="javascript:;" rel="noopener external nofollow" style="font-family:'LXGW'!important;color:black" onclick="setFont('LXGW')">霞鹜文楷</a>
-<a class="swf" id="swf_TTQHB" href="javascript:;" rel="noopener external nofollow" style="font-family:'TTQHB'!important;color:black" onclick="setFont('TTQHB')">甜甜圈海报</a>
-<a class="swf" id="swf_YSHST" href="javascript:;" rel="noopener external nofollow" style="font-family:'YSHST'!important;color:black" onclick="setFont('YSHST')">优设好身体</a>
-<a class="swf" id="swf_MiSans" href="javascript:;" rel="noopener external nofollow" style="font-family:'MiSans'!important;color:black" onclick="setFont('MiSans')">MiSans</a>
-<a class="swf" id="swf_default" href="javascript:;" rel="noopener external nofollow" style="font-family:-apple-system, IBM Plex Mono ,monosapce,'微软雅黑', sans-serif;!important;color:black" onclick="setFont('default')">系统默认</a>
+<a class="swf" id="swf_FangSong" href="javascript:;" rel="noopener external nofollow" style="font-family:'BeautyReflections'!important;color:black" onclick="setFont('BeautyReflections')">黄油体</a>
+<a class="swf" id="swf_PMingLiU" href="javascript:;" rel="noopener external nofollow" style="font-family:'ZhiMangXing'!important;color:black" onclick="setFont('ZhiMangXing')">莽行书</a>
+<a class="swf" id="swf_KaiTi" href="javascript:;" rel="noopener external nofollow" style="font-family:'KaiTi'!important;color:black" onclick="setFont('default')">默认（楷体）</a>
+<a class="swf" id="swf_SimHei" href="javascript:;" rel="noopener external nofollow" style="font-family:'MaoCao'!important;color:black" onclick="setFont('MaoCao')">毛草</a>
+<a class="swf" id="swf_SimSun" href="javascript:;" rel="noopener external nofollow" style="font-family:'LongCang'!important;color:black" onclick="setFont('LongCang')">龙藏体</a>
+<a class="swf" id="swf_default" href="javascript:;" rel="noopener external nofollow" style="font-family:-apple-system, IBM Plex Mono ,monosapce,'微软雅黑', sans-serif;!important;color:black" onclick="setFont('default')">默认（微软雅黑）</a>
 </p>
 
 <h2>三、主题色设置</h2>
